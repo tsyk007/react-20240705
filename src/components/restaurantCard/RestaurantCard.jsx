@@ -4,17 +4,17 @@ import {
   minDishCounterValue,
 } from "../../constants/constants.js";
 
-const RestaurantCard = ({ element }) => {
-  if (!element) return null;
+const RestaurantCard = ({ restaurant }) => {
+  if (!restaurant) return null;
 
   return (
     <div>
-      <h1>{element.name}</h1>
+      <h1>{restaurant.name}</h1>
       <h3>Меню</h3>
       <ul>
-        {element?.menu.length > 0
-          ? element.menu.map((item, index) => (
-              <li key={`${element.name}_menu_${index}`}>
+        {restaurant?.menu.length > 0
+          ? restaurant.menu.map((item, index) => (
+              <li key={`${restaurant.name}_menu_${index}`}>
                 <span>{item.name}</span>
                 <Counter min={minDishCounterValue} max={maxDishCounterValue} />
               </li>
@@ -23,9 +23,9 @@ const RestaurantCard = ({ element }) => {
       </ul>
       <h3>Отзывы</h3>
       <ul>
-        {element?.reviews.length > 0
-          ? element.reviews.map((item, index) => (
-              <li key={`${element.name}reviews${index}`}>{item.text}</li>
+        {restaurant?.reviews.length > 0
+          ? restaurant.reviews.map((item, index) => (
+              <li key={`${restaurant.name}reviews${index}`}>{item.text}</li>
             ))
           : null}
       </ul>

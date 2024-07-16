@@ -4,14 +4,20 @@ import classes from "./TabList.module.css";
 const TabList = ({ items, activeIndex, setActiveIndex }) => {
   if (!items?.length) return null;
 
+  const setActive = (tabIndex) => {
+    const isActive = tabIndex === activeIndex;
+    if (!isActive) {
+      setActiveIndex(tabIndex);
+    }
+  };
+
   return (
     <div className={classes.container}>
       {items.map((item, i) => (
         <Tab
           key={i}
-          activeIndex={activeIndex}
-          setActiveIndex={setActiveIndex}
-          tabIndex={i}
+          isActive={i === activeIndex}
+          onClick={() => setActive(i)}
           name={item.name}
         />
       ))}

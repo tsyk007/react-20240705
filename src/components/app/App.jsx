@@ -14,7 +14,7 @@ const App = () => {
         activeIndex={activeRestaurantIndex}
         setActiveIndex={setActiveRestaurantIndex}
       />
-      <RestaurantCard element={restaurants[activeRestaurantIndex]} />
+      <RestaurantCard restaurant={restaurants[activeRestaurantIndex]} />
     </Layout>
   );
 };

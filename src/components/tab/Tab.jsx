@@ -1,16 +1,8 @@
 import classes from "./Tab.module.css";
 
-const Tab = ({ activeIndex, setActiveIndex, tabIndex, name }) => {
-  const isActive = activeIndex === tabIndex;
-
-  const setActive = () => {
-    if (!isActive) {
-      setActiveIndex(tabIndex);
-    }
-  };
-
+const Tab = ({ isActive, name, onClick }) => {
   return (
-    <button className={isActive ? classes.isActive : ""} onClick={setActive}>
+    <button className={isActive ? classes.isActive : ""} onClick={onClick}>
       {name}
     </button>
   );
