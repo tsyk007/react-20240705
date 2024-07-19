@@ -1,8 +1,5 @@
-import Counter from "../counter/Counter.jsx";
-import {
-  maxDishCounterValue,
-  minDishCounterValue,
-} from "../../constants/constants.js";
+import Menu from "../menu/Menu.jsx";
+import Reviews from "../reviews/Reviews.jsx";
 
 const RestaurantCard = ({ restaurant }) => {
   if (!restaurant) return null;
@@ -11,24 +8,8 @@ const RestaurantCard = ({ restaurant }) => {
     <div>
       <h1>{restaurant.name}</h1>
       <h3>Меню</h3>
-      <ul>
-        {restaurant?.menu.length > 0
-          ? restaurant.menu.map((item, index) => (
-              <li key={`${restaurant.name}_menu_${index}`}>
-                <span>{item.name}</span>
-                <Counter min={minDishCounterValue} max={maxDishCounterValue} />
-              </li>
-            ))
-          : null}
-      </ul>
-      <h3>Отзывы</h3>
-      <ul>
-        {restaurant?.reviews.length > 0
-          ? restaurant.reviews.map((item, index) => (
-              <li key={`${restaurant.name}reviews${index}`}>{item.text}</li>
-            ))
-          : null}
-      </ul>
+      <Menu menuItems={restaurant.menu} />
+      <Reviews reviewItems={restaurant.reviews} />
     </div>
   );
 };
