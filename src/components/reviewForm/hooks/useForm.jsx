@@ -7,6 +7,10 @@ import {
   SET_RATING,
   SET_TEXT,
 } from "./constants/actions.js";
+import {
+  maxRatingCounterValue,
+  minRatingCounterValue,
+} from "../../../constants/constants.js";
 
 export const useForm = () => {
   const [form, dispatch] = useReducer(formReducer, INITIAL_FORM);
@@ -15,7 +19,10 @@ export const useForm = () => {
   const updateText = (text) => dispatch({ type: SET_TEXT, payload: text });
   const updateRating = (rating) =>
     dispatch({ type: SET_RATING, payload: rating });
-
+  const increaseRating = () =>
+    updateRating(Math.min(maxRatingCounterValue, form.rating + 1));
+  const decreaseRating = () =>
+    updateRating(Math.max(minRatingCounterValue, form.rating - 1));
   const clearForm = () => dispatch({ type: CLEAR_FORM, payload: "" });
 
   return {
@@ -23,6 +30,8 @@ export const useForm = () => {
     updateName,
     updateText,
     updateRating,
+    increaseRating,
+    decreaseRating,
     clearForm,
   };
 };

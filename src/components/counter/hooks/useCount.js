@@ -1,4 +1,8 @@
-const useCount = ({ setValue, min, max, step = 1 }) => {
+import { useState } from "react";
+
+const useCount = ({ min, max, step = 1 }) => {
+  const [value, setValue] = useState(min);
+
   const increase = () => {
     setValue((prev) => (prev + step > max ? max : prev + step));
   };
@@ -7,7 +11,7 @@ const useCount = ({ setValue, min, max, step = 1 }) => {
     setValue((prev) => (prev - step < min ? min : prev - step));
   };
 
-  return { increase, decrease };
+  return { value, increase, decrease };
 };
 
 export default useCount;
