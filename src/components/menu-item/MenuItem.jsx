@@ -3,19 +3,12 @@ import {
   maxDishCounterValue,
   minDishCounterValue,
 } from "../../constants/constants.js";
-import { useState } from "react";
 
 const MenuItem = ({ menuItem }) => {
-  const [counterValue, setCounterValue] = useState(minDishCounterValue);
   return (
     <div>
       <span>{menuItem.name}</span>
-      <CounterContainer
-        min={minDishCounterValue}
-        max={maxDishCounterValue}
-        value={counterValue}
-        setValue={setCounterValue}
-      />
+      <CounterContainer min={minDishCounterValue} max={maxDishCounterValue} />
     </div>
   );
 };
