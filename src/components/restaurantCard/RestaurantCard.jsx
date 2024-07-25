@@ -7,7 +7,6 @@ const RestaurantCard = ({ restaurant }) => {
   return (
     <div>
       <h1>{restaurant.name}</h1>
-      <h3>Меню</h3>
       <Menu menuItems={restaurant.menu} />
       <Reviews reviewItems={restaurant.reviews} />
     </div>
